@@ -99,4 +99,22 @@ async function copyToClipboard(elementId) {
 document.addEventListener('DOMContentLoaded', () => {
   applyTheme(currentTheme);
   applyLanguage(currentLanguage);
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  const settingsBtn = document.getElementById('settingsButton');
+  const settingsMenu = document.getElementById('settingsMenu');
+
+  if (settingsBtn && settingsMenu) {
+    settingsBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      settingsMenu.style.display = settingsMenu.style.display === 'none' || settingsMenu.style.display === '' ? 'block' : 'none';
+    });
+    // Fecha o menu ao clicar fora
+    document.addEventListener('click', function(e) {
+      if (!settingsMenu.contains(e.target) && e.target !== settingsBtn) {
+        settingsMenu.style.display = 'none';
+      }
+    });
+  }
 }); 
