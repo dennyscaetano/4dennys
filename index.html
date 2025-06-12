@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#003366" />
+  <meta name="format-detection" content="telephone=no" />
+  <title>4Dennys Ferramentas</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="apple-touch-icon" href="icon.png" />
+  <link rel="manifest" href="manifest.json" />
+</head>
+<body>
+  <div class="controls">
+    <button id="themeButton" onclick="toggleTheme()" class="control-button">
+      <i class="fas fa-moon"></i>
+      <span data-translate="theme.dark">Tema Escuro</span>
+    </button>
+    <button id="languageButton" onclick="toggleLanguage()" class="control-button">
+      <i class="fas fa-globe"></i>
+      <span data-translate="language">Idioma</span>
+    </button>
+  </div>
+
+  <header>
+    <i class="fas fa-tools"></i>
+    <span data-translate="title">4Dennys Ferramentas</span>
+  </header>
+
+  <main>
+    <section>
+      <h3><i class="fas fa-id-card"></i> <span data-translate="cpf.title">Gerador de CPF</span></h3>
+      <div class="input-group">
+        <div class="input-row">
+          <label><span data-translate="cpf.quantity">Quantidade</span>: <input type="number" id="cpfQtd" value="1" min="1" /></label>
+          <label><span data-translate="cpf.withMask">Com máscara?</span> <select id="cpfMascara">
+            <option value="true" data-translate="cpf.yes">Sim</option>
+            <option value="false" data-translate="cpf.no">Não</option>
+          </select></label>
+        </div>
+        <button onclick="cpfPage.gerar()">
+          <i class="fas fa-sync-alt"></i> <span data-translate="cpf.generate">Gerar CPF</span>
+        </button>
+      </div>
+      <div class="output-container">
+        <div class="output" id="cpfOutput"></div>
+        <button class="copy-button" onclick="copyToClipboard('cpfOutput')">
+          <i class="fas fa-copy"></i>
+          <span class="copy-tooltip" data-translate="copy">Copiar</span>
+        </button>
+      </div>
+    </section>
+
+    <section>
+      <h3><i class="fas fa-building"></i> <span data-translate="cnpj.title">Gerador de CNPJ</span></h3>
+      <div class="input-group">
+        <div class="input-row">
+          <label><span data-translate="cnpj.quantity">Quantidade</span>: <input type="number" id="cnpjQtd" value="1" min="1" /></label>
+          <label><span data-translate="cnpj.withMask">Com máscara?</span> <select id="cnpjMascara">
+            <option value="true" data-translate="cnpj.yes">Sim</option>
+            <option value="false" data-translate="cnpj.no">Não</option>
+          </select></label>
+        </div>
+        <button onclick="cnpjPage.gerar()">
+          <i class="fas fa-sync-alt"></i> <span data-translate="cnpj.generate">Gerar CNPJ</span>
+        </button>
+      </div>
+      <div class="output-container">
+        <div class="output" id="cnpjOutput"></div>
+        <button class="copy-button" onclick="copyToClipboard('cnpjOutput')">
+          <i class="fas fa-copy"></i>
+          <span class="copy-tooltip" data-translate="copy">Copiar</span>
+        </button>
+      </div>
+    </section>
+
+    <section>
+      <h3><i class="fas fa-user"></i> <span data-translate="name.title">Gerador de Nome</span></h3>
+      <div class="input-group">
+        <div class="input-row">
+          <label>
+            <span data-translate="name.options.quantity">Quantidade</span>:
+            <input type="number" id="nomeQtd" value="1" min="1" max="100" />
+          </label>
+        </div>
+        <button type="button" id="gerarNomeBtn">
+          <i class="fas fa-sync-alt"></i> <span data-translate="name.generate">Gerar Nome</span>
+        </button>
+      </div>
+      <div class="output-container">
+        <div class="output" id="nomeOutput"></div>
+        <button class="copy-button" onclick="copyToClipboard('nomeOutput')">
+          <i class="fas fa-copy"></i>
+          <span class="copy-tooltip" data-translate="copy">Copiar</span>
+        </button>
+      </div>
+    </section>
+
+    <section>
+      <h3><i class="fas fa-car"></i> <span data-translate="plate.title">Gerador de Placa</span></h3>
+      <div class="input-group">
+        <button onclick="placaPage.gerar()">
+          <i class="fas fa-sync-alt"></i> <span data-translate="plate.generate">Gerar Placa</span>
+        </button>
+      </div>
+      <div class="output-container">
+        <div class="output" id="placaOutput"></div>
+        <button class="copy-button" onclick="copyToClipboard('placaOutput')">
+          <i class="fas fa-copy"></i>
+          <span class="copy-tooltip" data-translate="copy">Copiar</span>
+        </button>
+      </div>
+    </section>
+
+    <section>
+      <h3><i class="fas fa-map-marker-alt"></i> <span data-translate="cep.title">Gerador de CEP</span></h3>
+      <div class="input-group">
+        <button onclick="cepPage.gerar()">
+          <i class="fas fa-sync-alt"></i> <span data-translate="cep.generate">Gerar CEP</span>
+        </button>
+      </div>
+      <div class="output-container">
+        <div class="output" id="cepOutput"></div>
+        <button class="copy-button" onclick="copyToClipboard('cepOutput')">
+          <i class="fas fa-copy"></i>
+          <span class="copy-tooltip" data-translate="copy">Copiar</span>
+        </button>
+      </div>
+    </section>
+
+    <section>
+      <h3><i class="fas fa-credit-card"></i> <span data-translate="card.title">Gerador de Cartão de Crédito</span></h3>
+      <div class="input-group">
+        <button onclick="cartaoPage.gerar()">
+          <i class="fas fa-sync-alt"></i> <span data-translate="card.generate">Gerar Cartão</span>
+        </button>
+      </div>
+      <div class="output-container">
+        <div class="output" id="cartaoOutput"></div>
+        <button class="copy-button" onclick="copyToClipboard('cartaoOutput')">
+          <i class="fas fa-copy"></i>
+          <span class="copy-tooltip" data-translate="copy">Copiar</span>
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <script src="translations.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js"></script>
+  <script>
+    // Inicialização do Faker.js
+    console.log('Faker.js carregado:', typeof faker); // Debug
+  </script>
+  <script src="script.js"></script>
+  <script src="app.js"></script>
+  <script src="utils.js"></script>
+  <script src="pages/cpfPage.js"></script>
+  <script src="pages/cnpjPage.js"></script>
+  <script src="pages/nomePage.js"></script>
+  <script src="pages/placaPage.js"></script>
+  <script src="pages/cepPage.js"></script>
+  <script src="pages/cartaoPage.js"></script>
+</body>
+</html>

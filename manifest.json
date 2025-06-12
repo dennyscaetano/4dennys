@@ -1,0 +1,24 @@
+{
+  "name": "4Dennys Ferramentas",
+  "short_name": "4Dennys",
+  "description": "Geradores de dados para desenvolvedores e QA's",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f4f4f9",
+  "theme_color": "#003366",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+} 
